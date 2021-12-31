@@ -7,7 +7,8 @@ primary:
     hikari:
       connection-test-query: SELECT 1 FROM DUAL
 
-
+server:
+  port:8070
 spring:
   session:
   store-type: jdbc
@@ -26,4 +27,10 @@ management:
         include:
           - "info"
           - "health"
-          - "httptrace"
+          - "httptrace":
+          - "prometheus"
+
+  metrics:
+    export:
+      prometheus:
+        enabled: true
