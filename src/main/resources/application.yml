@@ -1,0 +1,29 @@
+primary:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://aiss-local-db:3306/inspire12_api?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Seoul
+    username: paige
+    password: paige12#
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+
+
+spring:
+  session:
+  store-type: jdbc
+  jdbc.initialize-schema: always
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org.springframework.cache: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "info"
+          - "health"
+          - "httptrace"
