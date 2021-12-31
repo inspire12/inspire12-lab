@@ -8,7 +8,7 @@ primary:
       connection-test-query: SELECT 1 FROM DUAL
 
 server:
-  port:8070
+  port: 8070
 spring:
   session:
   store-type: jdbc
