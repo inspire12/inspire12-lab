@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 @Configuration
 //@EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.inspire12.practice.lab.domain",
+        basePackages = {"com.inspire12.practice.lab.domain", "com.inspire12.practice.lab.database.jpa"},
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = LabDataSource.TX_MANAGER
 )
@@ -39,7 +39,7 @@ public class LabDataSource {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(dataSource());
-        entityManager.setPackagesToScan(new String[]{"com.inspire12.practice.api.domain"});
+        entityManager.setPackagesToScan(new String[]{"com.inspire12.practice.lab.domain", "com.inspire12.practice.lab.database.jpa"});
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         entityManager.setJpaPropertyMap(new HashMap<String, String>() {{
