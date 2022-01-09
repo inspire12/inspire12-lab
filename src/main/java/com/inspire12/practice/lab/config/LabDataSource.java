@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 //@EnableTransactionManagement
 @EnableConfigurationProperties
 @EnableJpaRepositories(
-        basePackages = "com.inspire12.practice.lab.database.jpa",
+        basePackages = "com.inspire12.practice.lab.database",
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = LabDataSource.TX_MANAGER
 )

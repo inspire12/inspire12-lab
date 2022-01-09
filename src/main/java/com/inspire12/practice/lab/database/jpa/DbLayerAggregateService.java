@@ -2,6 +2,7 @@ package com.inspire12.practice.lab.database.jpa;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,9 +18,4 @@ public class DbLayerAggregateService {
         return dbMemberRepository.findById(id).get();
     }
 
-    public Member setMember(int id, String name) {
-        Member member = getMember(id);
-        member = new Member(id, name);
-        return member;
-    }
 }
