@@ -1,18 +1,17 @@
-package com.inspire12.practice.lab.database.jpa;
+package com.inspire12.practice.lab.database.ddd.user.aggregate.event;
 
+import com.inspire12.practice.lab.database.ddd.user.aggregate.MemberAggregateService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Component
 public class MemberListener {
 
-    private final DomainService domainService;
+    private final MemberAggregateService domainService;
 
-    public MemberListener(DomainService domainService) {
+    public MemberListener(MemberAggregateService domainService) {
         this.domainService = domainService;
     }
 
