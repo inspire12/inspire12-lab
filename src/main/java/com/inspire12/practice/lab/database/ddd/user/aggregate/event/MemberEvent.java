@@ -1,9 +1,8 @@
-package com.inspire12.practice.lab.database.jpa;
+package com.inspire12.practice.lab.database.ddd.user.aggregate.event;
 
-import lombok.AllArgsConstructor;
+import com.inspire12.practice.lab.database.ddd.user.aggregate.entity.Member;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationEventPublisher;
 
 @Getter
 public class MemberEvent extends ApplicationEvent {

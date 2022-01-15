@@ -1,5 +1,7 @@
-package com.inspire12.practice.lab.database.jpa;
+package com.inspire12.practice.lab.database.ddd;
 
+import com.inspire12.practice.lab.database.ddd.user.aggregate.MemberAggregateService;
+import com.inspire12.practice.lab.database.ddd.user.aggregate.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,33 +11,29 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DbService {
-    private final DomainService domainService;
-    private final DbLayerAggregateService dbLayerAggregateService;
-    private final DbMemberRepository dbMemberRepository;
+public class MemberDomainService {
+    private final MemberAggregateService memberAggregateService;
+
 
     @Transactional
     public List<Member> testJpaListQuery() {
-        List<Member> memberList = domainService.getMembers();
-        List<Member> memberList2 = domainService.getMembers();
-        return dbLayerAggregateService.getMembers();
+        List<Member> memberList = memberAggregateService.getMembers();
+        List<Member> memberList2 = memberAggregateService.getMembers();
+        return memberAggregateService.getMembers();
     }
 
     public void initEntity() {
-        domainService.saveAll(Arrays.asList(new Member("a"), new Member("b"), new Member("c")));
+        memberAggregateService.saveAll(Arrays.asList(new Member("a"), new Member("b"), new Member("c")));
     }
 
     @Transactional
     public void testJpaEvent(int id, String name) {
-        domainService.changeName(id, name);
-        System.out.println("when commit test ");
-//        test3(id);
+        memberAggregateService.changeName(id, name);
     }
 
     @Transactional
     public void test3(int id) {
-
-        Member member = domainService.getMember(id);
+        Member member = memberAggregateService.getMember(id);
 //
 //        Member member2 = domainService.getMember(id);
 //        List<Member> memberList = dbLayerAggregateService.getMember(id);

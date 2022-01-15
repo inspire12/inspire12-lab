@@ -1,5 +1,7 @@
-package com.inspire12.practice.lab.database.jpa;
+package com.inspire12.practice.lab.database.ddd.user.aggregate;
 
+import com.inspire12.practice.lab.database.ddd.user.aggregate.repository.MemberRepository;
+import com.inspire12.practice.lab.database.ddd.user.aggregate.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,8 +10,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DomainService {
-    private final DbMemberRepository dbMemberRepository;
+public class MemberAggregateService {
+    private final MemberRepository dbMemberRepository;
 
     public List<Member> getMembers() {
         return dbMemberRepository.findAll();
