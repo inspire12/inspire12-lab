@@ -1,0 +1,20 @@
+type Mutation {
+    createMember(saveMemberInfo: SaveMember!): Member!,
+    deleteMemberBySn(memberSn: Int!): Boolean!
+}
+
+type Member {
+    memberSn: Int!,
+    memberId: String!,
+}
+
+# createMember(saveMemberInfo: SaveMember!): Member! 의 파라미터
+input SaveMember {
+    memberId: String!,
+    memberPw: String!,
+}
+
+
+type Query {
+    memberBySn(memberSn: Int!): Member,
+}
