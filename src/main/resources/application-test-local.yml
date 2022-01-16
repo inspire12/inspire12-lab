@@ -30,13 +30,16 @@ spring:
   h2:
     console:
       enabled: true
+  redis:
+    host: localhost
+    port: 6379
+
   datasource:
 #    url: jdbc:h2:mem:inspire12_api;MODE=MYSQL
     hikari:
       jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
     username: sa
   jpa:
-
     open-in-view: false
     hibernate:
       ddl-auto: update
@@ -47,8 +50,6 @@ spring:
         storage_engine: innodb
         show_sql: true
         format_sql: true
-
-
 
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration

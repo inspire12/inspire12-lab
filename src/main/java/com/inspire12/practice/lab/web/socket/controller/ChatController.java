@@ -1,29 +1,30 @@
 package com.inspire12.practice.lab.web.socket.controller;
 
 import com.inspire12.practice.lab.web.socket.ChatRoomRepository;
-import com.inspire12.practice.lab.web.socket.model.ChatRoom;
+import com.inspire12.practice.lab.web.socket.model.ChatMessage;
+import com.inspire12.practice.lab.web.socket.model.MessageType;
+import com.inspire12.practice.lab.web.socket.pubsub.RedisPublisher;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/room")
 public class ChatController {
+
+    private final SimpMessageSendingOperations messagingTemplate;
+    private final RedisPublisher redisPublisher;
     private final ChatRoomRepository chatRoomRepository;
 
-    @PostMapping
-    public ChatRoom createRoom(@RequestParam String name) {
-        return chatRoomRepository.createRoom(name);
+    // publisher
+    @MessageMapping("/chat/message")
+    public void message(ChatMessage message) {
+        if (MessageType.JOIN.equals(message.getType())) {
+            message.setMessage(message.getSender() + "님이 입장하셨습니다");
+        }
+//        messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
+        redisPublisher.publish(chatRoomRepository.getTopic(message.getRoomId()), message);
     }
 
-    @GetMapping
-    public List<ChatRoom> findAllRoom() {
-        return chatRoomRepository.findAllRoom();
-    }
 }
