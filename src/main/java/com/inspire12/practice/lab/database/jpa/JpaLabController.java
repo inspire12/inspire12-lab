@@ -1,5 +1,8 @@
-package com.inspire12.practice.lab.database.jpa.join;
+package com.inspire12.practice.lab.database.jpa;
 
+import com.inspire12.practice.lab.database.jpa.join.Student;
+import com.inspire12.practice.lab.database.jpa.join.StudentRepository;
+import com.inspire12.practice.lab.database.jpa.join.StudentSkillTag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;

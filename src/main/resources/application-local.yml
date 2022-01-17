@@ -1,0 +1,30 @@
+primary:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306/inspire12_api?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Seoul
+    username: manager
+    password: 1q2w3e4r!@
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+server:
+  port: 8081
+
+spring:
+  session:
+  store-type: jdbc
+  jdbc.initialize-schema: always
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org.springframework.cache: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "info"
+          - "health"
+          - "httptrace"
