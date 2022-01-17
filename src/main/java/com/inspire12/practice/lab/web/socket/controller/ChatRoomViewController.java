@@ -1,5 +1,7 @@
 package com.inspire12.practice.lab.web.socket.controller;
 
+import com.inspire12.practice.lab.security.JwtTokenProvider;
+import com.inspire12.practice.lab.security.dto.LoginInfo;
 import com.inspire12.practice.lab.web.socket.ChatRoomRepository;
 import com.inspire12.practice.lab.web.socket.model.ChatMessage;
 import com.inspire12.practice.lab.web.socket.model.ChatRoom;
@@ -7,6 +9,8 @@ import com.inspire12.practice.lab.web.socket.model.MessageType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +29,7 @@ import java.util.List;
 public class ChatRoomViewController {
 
     private final ChatRoomRepository chatRoomRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     // 채팅 리스트 화면
     @GetMapping(value = "/chat/room")
@@ -56,5 +61,13 @@ public class ChatRoomViewController {
     @ResponseBody
     public ChatRoom roomInfo(@PathVariable String roomId) {
         return chatRoomRepository.findRoomById(roomId);
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    public LoginInfo getUserInfo() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        return LoginInfo.builder().name(name).token(jwtTokenProvider.generateToken(name)).build();
     }
 }

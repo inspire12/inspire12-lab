@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 public class CacheLabService {
 
     private final CacheService<String, CacheObject> memoryCacheService;
-    private final CacheManager cacheManager;
+//    private final CacheManager cacheManager;
 
-    @Cacheable("lab1")
+    @Cacheable(value = "lab1")
     public CacheObject getCacheObject(int index) {
         return new CacheObject(index + 1);
     }

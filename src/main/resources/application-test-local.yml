@@ -19,7 +19,7 @@ spring:
     jdbc.initialize-schema: always
   devtools:
     livereload:
-      enabled: true
+      enabled: false
     restart:
       enabled: true
     freemarker:
@@ -50,6 +50,14 @@ spring:
         storage_engine: innodb
         show_sql: true
         format_sql: true
+  jwt:
+    secret: govlepel@$&
+
+  security:
+    user:
+      name: user
+      password: user
+      roles: manager
 
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
