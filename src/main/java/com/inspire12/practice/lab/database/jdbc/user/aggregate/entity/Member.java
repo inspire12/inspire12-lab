@@ -1,7 +1,7 @@
-package com.inspire12.practice.lab.database.ddd.user.aggregate.entity;
+package com.inspire12.practice.lab.database.jdbc.user.aggregate.entity;
 
 
-import com.inspire12.practice.lab.database.ddd.user.aggregate.event.MemberEvent;
+import com.inspire12.practice.lab.database.jdbc.user.aggregate.event.MemberEvent;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

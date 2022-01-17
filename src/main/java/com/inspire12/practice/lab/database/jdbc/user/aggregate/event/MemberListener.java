@@ -1,6 +1,6 @@
-package com.inspire12.practice.lab.database.ddd.user.aggregate.event;
+package com.inspire12.practice.lab.database.jdbc.user.aggregate.event;
 
-import com.inspire12.practice.lab.database.ddd.user.aggregate.MemberAggregateService;
+import com.inspire12.practice.lab.database.jdbc.user.aggregate.MemberAggregateService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

@@ -11,9 +11,9 @@ import org.springframework.web.servlet.DispatcherServlet;
 @Service
 public class SpringCoreService {
 
-    private final BeanPostProcessor beanPostProcessor;
-    private final DispatcherServlet dispatcherServlet;
-    private final DeferredResult.DeferredResultHandler deferredResultHandler;
+//    private final BeanPostProcessor beanPostProcessor;
+//    private final DispatcherServlet dispatcherServlet;
+//    private final DeferredResult.DeferredResultHandler deferredResultHandler;
 
     public void test() {
 

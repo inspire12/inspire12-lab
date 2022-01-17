@@ -1,7 +1,7 @@
-package com.inspire12.practice.lab.database.ddd;
+package com.inspire12.practice.lab.database.jdbc;
 
-import com.inspire12.practice.lab.database.ddd.user.aggregate.MemberAggregateService;
-import com.inspire12.practice.lab.database.ddd.user.aggregate.entity.Member;
+import com.inspire12.practice.lab.database.jdbc.user.aggregate.MemberAggregateService;
+import com.inspire12.practice.lab.database.jdbc.user.aggregate.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

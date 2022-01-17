@@ -1,4 +1,4 @@
-package com.inspire12.practice.lab.database.ddd;
+package com.inspire12.practice.lab.database.jdbc;
 
 import org.springframework.stereotype.Service;
 
