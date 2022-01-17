@@ -1,4 +1,4 @@
-//package com.inspire12.practice.lab.socket.ssevent;
+//package com.inspire12.practice.lab.web.socket.ssevent;
 //
 //import com.inspire12.practice.lab.extern.jsonplaceholder.User;
 //import com.inspire12.practice.lab.measure.TimeChecker;

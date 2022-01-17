@@ -1,8 +1,7 @@
-package com.inspire12.practice.lab.socket.ssevent;
+package com.inspire12.practice.lab.web.socket.ssevent;
 
 import com.inspire12.practice.lab.extern.jsonplaceholder.User;
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.slf4j.XSlf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
