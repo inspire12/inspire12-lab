@@ -1,4 +1,4 @@
-package com.inspire12.practice.lab.web.controller;
+package com.inspire12.practice.lab.web.mvc.controller;
 
 import com.inspire12.practice.lab.cache.CacheLabService;
 import com.inspire12.practice.lab.cache.CacheObject;
