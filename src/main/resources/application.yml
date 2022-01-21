@@ -39,3 +39,35 @@ management:
         enabled: true
     tags:
       application: ${spring.application.name}
+
+resilience4j:
+  circuitbreaker:
+#    backends:
+#      inspire12:
+#        ringBufferSizeInClosedState: 10
+#        ringBufferSizeInHalfOpenState: 30
+#        waitDurationInOpenState: 10000ms
+#        failureRateThreshold: 20
+#        registerHealthIndicator: false
+
+    configs:
+      default:
+        failureRateThreshold: 50
+        slowCallRateThreshold: 100
+        slowCallDurationThreshold: 60000
+        permittedNumberOfCallsInHalfOpenState: 4
+        maxWaitDurationInHalfOpenState: 1000
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 10
+        waitDurationInOpenState: 10000
+    instances:
+      hello:
+        baseConfig: default
+
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 3
+        limitRefreshPeriod: 10s
+        timeoutDuration: 1s
