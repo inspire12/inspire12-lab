@@ -34,6 +34,12 @@ public class Scheduler {
         }
     }
 
+    public void stopScheduler(String name) {
+        ScheduledFuture<?> a = scheduledFutureMap.getOrDefault(name, null);
+        if (a != null)
+            a.cancel(true);
+    }
+
     public void startScheduler(Runnable work, int seconds, String scheduleName) {
         ScheduledFuture<?> task = scheduler.schedule(work, new PeriodicTrigger(seconds, TimeUnit.SECONDS));
         scheduledFutureMap.put(scheduleName, task);
