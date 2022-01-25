@@ -1,21 +1,26 @@
+pom:
+  version: @project.version@
+  description: @project.description@
+
 spring:
-  session:
-  store-type: jdbc
-  jdbc.initialize-schema: always
   main:
     allow-bean-definition-overriding: true
-  properties:
-    show-sql: true
-    hibernate:
-      dialect: org.hibernate.dialect.MySQLDialect
-      id:
-        new_generator_mappings: false
-      format_sql: true
-      cache:
-        use_second_level_cache: false
-        use_query_cache: false
-      generate_statistics: true
-    open-in-view: false
+  session:
+    store-type: jdbc
+    jdbc.initialize-schema: always
+  jpa:
+    properties:
+      show-sql: true
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        id:
+          new_generator_mappings: false
+        format_sql: true
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+        generate_statistics: true
+      open-in-view: false
 
 logging:
   level:

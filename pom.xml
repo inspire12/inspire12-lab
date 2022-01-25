@@ -14,6 +14,7 @@
     <name>inspire12-lab</name>
     <description>inspire12-lab</description>
     <properties>
+        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <java.version>11</java.version>
         <guava.version>29.0-jre</guava.version>
         <resilience4j.version>1.7.1</resilience4j.version>
@@ -88,6 +89,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-data-rest</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-common</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <version>2.0.4.RELEASE</version>
+        </dependency>
+
         <!--        cloud -->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
@@ -137,6 +160,8 @@
             <artifactId>embedded-redis</artifactId>
             <version>0.7.3</version>
         </dependency>
+
+
         <!--    // database -->
         <!-- web front page-->
         <dependency>
@@ -243,6 +268,29 @@
                 </executions>
             </plugin>
             <!-- end::frontend-maven-plugin[] -->
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.6</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <attributes>
+                                <snippets>${snippetsDirectory}</snippets>
+                            </attributes>
+                            <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+                            <outputDirectory>target/generated-docs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
