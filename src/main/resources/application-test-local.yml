@@ -12,6 +12,13 @@ community:
     hikari:
       connection-test-query: SELECT 1 FROM DUAL
     jdbc.initialize-schema: always
+r2dbc:
+  datasource:
+    jdbc-url: jdbc:h2:mem:customer;MODE=MYSQL
+    username: sa
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+    jdbc.initialize-schema: always
 
 spring:
   session:
@@ -57,3 +64,4 @@ spring:
 logging:
   level:
     root: info
+    org:springframework:r2dbc: DEBUG

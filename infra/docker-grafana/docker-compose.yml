@@ -1,0 +1,15 @@
+version: "3"
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    environment:
+      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
+    volumes:
+      - ./etc/localtime:/etc/localtime:ro
+    ports:
+      - 3000:3000
+# Explicitly define the persistent volume for your data storage
+volumes:
+  grafana-data:
+    external: true

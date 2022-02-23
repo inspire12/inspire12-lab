@@ -14,7 +14,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -25,10 +24,10 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(
         basePackages = "com.inspire12.practice.lab.database",
         entityManagerFactoryRef = "entityManagerFactory",
-        transactionManagerRef = LabDataSource.TX_MANAGER
+        transactionManagerRef = PrimaryDataSource.TX_MANAGER
 )
-public class LabDataSource {
-    public final static String TX_MANAGER ="transactionManager";
+public class PrimaryDataSource {
+    public final static String TX_MANAGER ="primary_transactionManager";
 
     @Bean
     @ConfigurationProperties(prefix = "primary.datasource")

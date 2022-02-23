@@ -14,7 +14,7 @@ spring:
   store-type: jdbc
   jdbc.initialize-schema: always
   main:
-    allow-bean-definition-overriding: true
+    allow-bean-definitioazsx wn-overriding: true
 
 logging:
   level:

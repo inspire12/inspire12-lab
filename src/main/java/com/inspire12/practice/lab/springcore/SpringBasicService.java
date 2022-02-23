@@ -7,15 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.servlet.DispatcherServlet;
 
-@RequiredArgsConstructor
-@Service
-public class SpringCoreService {
+public class SpringBasicService {
 
-//    private final BeanPostProcessor beanPostProcessor;
-//    private final DispatcherServlet dispatcherServlet;
-//    private final DeferredResult.DeferredResultHandler deferredResultHandler;
-
-    public void test() {
-
+    public String hello() {
+        return "hello";
     }
 }
